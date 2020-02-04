@@ -1,5 +1,12 @@
 package com.accp.domain;
 
+import java.util.List;
+
+/**
+ * 客户分类表
+ * @author asus
+ *
+ */
 public class Keclassify {
     private String keyid;
 
@@ -22,6 +29,16 @@ public class Keclassify {
     private String res4;
 
     private Integer res5;
+    
+    private List<Client> clients;//客户集合
+    
+    public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+    
+    public List<Client> getClients() {
+		return clients;
+	}
 
     public String getKeyid() {
         return keyid;

@@ -1,5 +1,10 @@
 package com.accp.domain;
 
+/**
+ * 车辆类
+ * @author asus
+ *
+ */
 public class Vehicle {
     private String veeid;
 
@@ -64,6 +69,46 @@ public class Vehicle {
     private String res4;
 
     private Integer res5;
+    
+    private Trademark trademark;//车型品牌对象
+    
+    private Client client;//客户对象
+    
+    private Ownership ownership;//车辆归属
+    
+    private Enginebrand enginebrand;//发动机品牌对象
+    
+    public void setEnginebrand(Enginebrand enginebrand) {
+		this.enginebrand = enginebrand;
+	}
+    
+    public Enginebrand getEnginebrand() {
+		return enginebrand;
+	}
+    
+    public void setOwnership(Ownership ownership) {
+		this.ownership = ownership;
+	}
+    
+    public Ownership getOwnership() {
+		return ownership;
+	}
+    
+    public void setClient(Client client) {
+		this.client = client;
+	}
+    
+    public Client getClient() {
+		return client;
+	}
+    
+    public void setTrademark(Trademark trademark) {
+		this.trademark = trademark;
+	}
+    
+    public Trademark getTrademark() {
+		return trademark;
+	}
 
     public String getVeeid() {
         return veeid;

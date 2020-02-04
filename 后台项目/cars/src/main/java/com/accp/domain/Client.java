@@ -1,5 +1,12 @@
 package com.accp.domain;
 
+import java.util.List;
+
+/**
+ * 客户表
+ * @author asus
+ *
+ */
 public class Client {
     private String cltid;
 
@@ -60,8 +67,58 @@ public class Client {
     private String res4;
 
     private Integer res5;
+    
+    private Province province;//省对象
+    
+    private City city;//市对象
+    
+    private District district;//区对象
+    
+    private Keclassify keclassify;//客户分类对象
+    
+    private List<Vehicle> vehicles;//车集合
+    
+    public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+    
+    public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
 
-    public String getCltid() {
+    public Province getProvince() {
+		return province;
+	}
+
+	public void setProvince(Province province) {
+		this.province = province;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public District getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(District district) {
+		this.district = district;
+	}
+
+	public Keclassify getKeclassify() {
+		return keclassify;
+	}
+
+	public void setKeclassify(Keclassify keclassify) {
+		this.keclassify = keclassify;
+	}
+
+	public String getCltid() {
         return cltid;
     }
 
