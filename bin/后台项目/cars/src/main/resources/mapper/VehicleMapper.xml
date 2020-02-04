@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.mapper.VehicleMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.domain.Vehicle" >
+    <result column="veeid" property="veeid" jdbcType="VARCHAR" />
+    <result column="veebrand" property="veebrand" jdbcType="VARCHAR" />
+    <result column="veetype" property="veetype" jdbcType="VARCHAR" />
+    <result column="veedriver" property="veedriver" jdbcType="VARCHAR" />
+    <result column="veedriverphone" property="veedriverphone" jdbcType="VARCHAR" />
+    <result column="veedate" property="veedate" jdbcType="VARCHAR" />
+    <result column="ownershipid" property="ownershipid" jdbcType="INTEGER" />
+    <result column="veeexpires" property="veeexpires" jdbcType="VARCHAR" />
+    <result column="veeframe" property="veeframe" jdbcType="VARCHAR" />
+    <result column="veeengine" property="veeengine" jdbcType="VARCHAR" />
+    <result column="veeyear" property="veeyear" jdbcType="VARCHAR" />
+    <result column="veemileage" property="veemileage" jdbcType="VARCHAR" />
+    <result column="endid" property="endid" jdbcType="VARCHAR" />
+    <result column="veeload" property="veeload" jdbcType="INTEGER" />
+    <result column="veepurchase" property="veepurchase" jdbcType="VARCHAR" />
+    <result column="veeregistered" property="veeregistered" jdbcType="VARCHAR" />
+    <result column="veevehicle" property="veevehicle" jdbcType="VARCHAR" />
+    <result column="veecategory" property="veecategory" jdbcType="VARCHAR" />
+    <result column="veeseries" property="veeseries" jdbcType="VARCHAR" />
+    <result column="veeinsurance" property="veeinsurance" jdbcType="VARCHAR" />
+    <result column="veeexpire" property="veeexpire" jdbcType="VARCHAR" />
+    <result column="veeflag" property="veeflag" jdbcType="VARCHAR" />
+    <result column="veebusiness" property="veebusiness" jdbcType="VARCHAR" />
+    <result column="veebusexp" property="veebusexp" jdbcType="VARCHAR" />
+    <result column="veeupkeep" property="veeupkeep" jdbcType="VARCHAR" />
+    <result column="veeupdate" property="veeupdate" jdbcType="VARCHAR" />
+    <result column="cltid" property="cltid" jdbcType="VARCHAR" />
+    <result column="res1" property="res1" jdbcType="VARCHAR" />
+    <result column="res2" property="res2" jdbcType="VARCHAR" />
+    <result column="res3" property="res3" jdbcType="VARCHAR" />
+    <result column="res4" property="res4" jdbcType="VARCHAR" />
+    <result column="res5" property="res5" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    veeid, veebrand, veetype, veedriver, veedriverphone, veedate, ownershipid, veeexpires, 
+    veeframe, veeengine, veeyear, veemileage, endid, veeload, veepurchase, veeregistered, 
+    veevehicle, veecategory, veeseries, veeinsurance, veeexpire, veeflag, veebusiness, 
+    veebusexp, veeupkeep, veeupdate, cltid, res1, res2, res3, res4, res5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.accp.domain.VehicleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.accp.domain.VehicleExample" >
+    delete from vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.accp.domain.Vehicle" >
+    insert into vehicle (veeid, veebrand, veetype, 
+      veedriver, veedriverphone, veedate, 
+      ownershipid, veeexpires, veeframe, 
+      veeengine, veeyear, veemileage, 
+      endid, veeload, veepurchase, 
+      veeregistered, veevehicle, veecategory, 
+      veeseries, veeinsurance, veeexpire, 
+      veeflag, veebusiness, veebusexp, 
+      veeupkeep, veeupdate, cltid, 
+      res1, res2, res3, res4, 
+      res5)
+    values (#{veeid,jdbcType=VARCHAR}, #{veebrand,jdbcType=VARCHAR}, #{veetype,jdbcType=VARCHAR}, 
+      #{veedriver,jdbcType=VARCHAR}, #{veedriverphone,jdbcType=VARCHAR}, #{veedate,jdbcType=VARCHAR}, 
+      #{ownershipid,jdbcType=INTEGER}, #{veeexpires,jdbcType=VARCHAR}, #{veeframe,jdbcType=VARCHAR}, 
+      #{veeengine,jdbcType=VARCHAR}, #{veeyear,jdbcType=VARCHAR}, #{veemileage,jdbcType=VARCHAR}, 
+      #{endid,jdbcType=VARCHAR}, #{veeload,jdbcType=INTEGER}, #{veepurchase,jdbcType=VARCHAR}, 
+      #{veeregistered,jdbcType=VARCHAR}, #{veevehicle,jdbcType=VARCHAR}, #{veecategory,jdbcType=VARCHAR}, 
+      #{veeseries,jdbcType=VARCHAR}, #{veeinsurance,jdbcType=VARCHAR}, #{veeexpire,jdbcType=VARCHAR}, 
+      #{veeflag,jdbcType=VARCHAR}, #{veebusiness,jdbcType=VARCHAR}, #{veebusexp,jdbcType=VARCHAR}, 
+      #{veeupkeep,jdbcType=VARCHAR}, #{veeupdate,jdbcType=VARCHAR}, #{cltid,jdbcType=VARCHAR}, 
+      #{res1,jdbcType=VARCHAR}, #{res2,jdbcType=VARCHAR}, #{res3,jdbcType=VARCHAR}, #{res4,jdbcType=VARCHAR}, 
+      #{res5,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.domain.Vehicle" >
+    insert into vehicle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="veeid != null" >
+        veeid,
+      </if>
+      <if test="veebrand != null" >
+        veebrand,
+      </if>
+      <if test="veetype != null" >
+        veetype,
+      </if>
+      <if test="veedriver != null" >
+        veedriver,
+      </if>
+      <if test="veedriverphone != null" >
+        veedriverphone,
+      </if>
+      <if test="veedate != null" >
+        veedate,
+      </if>
+      <if test="ownershipid != null" >
+        ownershipid,
+      </if>
+      <if test="veeexpires != null" >
+        veeexpires,
+      </if>
+      <if test="veeframe != null" >
+        veeframe,
+      </if>
+      <if test="veeengine != null" >
+        veeengine,
+      </if>
+      <if test="veeyear != null" >
+        veeyear,
+      </if>
+      <if test="veemileage != null" >
+        veemileage,
+      </if>
+      <if test="endid != null" >
+        endid,
+      </if>
+      <if test="veeload != null" >
+        veeload,
+      </if>
+      <if test="veepurchase != null" >
+        veepurchase,
+      </if>
+      <if test="veeregistered != null" >
+        veeregistered,
+      </if>
+      <if test="veevehicle != null" >
+        veevehicle,
+      </if>
+      <if test="veecategory != null" >
+        veecategory,
+      </if>
+      <if test="veeseries != null" >
+        veeseries,
+      </if>
+      <if test="veeinsurance != null" >
+        veeinsurance,
+      </if>
+      <if test="veeexpire != null" >
+        veeexpire,
+      </if>
+      <if test="veeflag != null" >
+        veeflag,
+      </if>
+      <if test="veebusiness != null" >
+        veebusiness,
+      </if>
+      <if test="veebusexp != null" >
+        veebusexp,
+      </if>
+      <if test="veeupkeep != null" >
+        veeupkeep,
+      </if>
+      <if test="veeupdate != null" >
+        veeupdate,
+      </if>
+      <if test="cltid != null" >
+        cltid,
+      </if>
+      <if test="res1 != null" >
+        res1,
+      </if>
+      <if test="res2 != null" >
+        res2,
+      </if>
+      <if test="res3 != null" >
+        res3,
+      </if>
+      <if test="res4 != null" >
+        res4,
+      </if>
+      <if test="res5 != null" >
+        res5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="veeid != null" >
+        #{veeid,jdbcType=VARCHAR},
+      </if>
+      <if test="veebrand != null" >
+        #{veebrand,jdbcType=VARCHAR},
+      </if>
+      <if test="veetype != null" >
+        #{veetype,jdbcType=VARCHAR},
+      </if>
+      <if test="veedriver != null" >
+        #{veedriver,jdbcType=VARCHAR},
+      </if>
+      <if test="veedriverphone != null" >
+        #{veedriverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="veedate != null" >
+        #{veedate,jdbcType=VARCHAR},
+      </if>
+      <if test="ownershipid != null" >
+        #{ownershipid,jdbcType=INTEGER},
+      </if>
+      <if test="veeexpires != null" >
+        #{veeexpires,jdbcType=VARCHAR},
+      </if>
+      <if test="veeframe != null" >
+        #{veeframe,jdbcType=VARCHAR},
+      </if>
+      <if test="veeengine != null" >
+        #{veeengine,jdbcType=VARCHAR},
+      </if>
+      <if test="veeyear != null" >
+        #{veeyear,jdbcType=VARCHAR},
+      </if>
+      <if test="veemileage != null" >
+        #{veemileage,jdbcType=VARCHAR},
+      </if>
+      <if test="endid != null" >
+        #{endid,jdbcType=VARCHAR},
+      </if>
+      <if test="veeload != null" >
+        #{veeload,jdbcType=INTEGER},
+      </if>
+      <if test="veepurchase != null" >
+        #{veepurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="veeregistered != null" >
+        #{veeregistered,jdbcType=VARCHAR},
+      </if>
+      <if test="veevehicle != null" >
+        #{veevehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="veecategory != null" >
+        #{veecategory,jdbcType=VARCHAR},
+      </if>
+      <if test="veeseries != null" >
+        #{veeseries,jdbcType=VARCHAR},
+      </if>
+      <if test="veeinsurance != null" >
+        #{veeinsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="veeexpire != null" >
+        #{veeexpire,jdbcType=VARCHAR},
+      </if>
+      <if test="veeflag != null" >
+        #{veeflag,jdbcType=VARCHAR},
+      </if>
+      <if test="veebusiness != null" >
+        #{veebusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="veebusexp != null" >
+        #{veebusexp,jdbcType=VARCHAR},
+      </if>
+      <if test="veeupkeep != null" >
+        #{veeupkeep,jdbcType=VARCHAR},
+      </if>
+      <if test="veeupdate != null" >
+        #{veeupdate,jdbcType=VARCHAR},
+      </if>
+      <if test="cltid != null" >
+        #{cltid,jdbcType=VARCHAR},
+      </if>
+      <if test="res1 != null" >
+        #{res1,jdbcType=VARCHAR},
+      </if>
+      <if test="res2 != null" >
+        #{res2,jdbcType=VARCHAR},
+      </if>
+      <if test="res3 != null" >
+        #{res3,jdbcType=VARCHAR},
+      </if>
+      <if test="res4 != null" >
+        #{res4,jdbcType=VARCHAR},
+      </if>
+      <if test="res5 != null" >
+        #{res5,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.accp.domain.VehicleExample" resultType="java.lang.Integer" >
+    select count(*) from vehicle
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update vehicle
+    <set >
+      <if test="record.veeid != null" >
+        veeid = #{record.veeid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veebrand != null" >
+        veebrand = #{record.veebrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veetype != null" >
+        veetype = #{record.veetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veedriver != null" >
+        veedriver = #{record.veedriver,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veedriverphone != null" >
+        veedriverphone = #{record.veedriverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veedate != null" >
+        veedate = #{record.veedate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownershipid != null" >
+        ownershipid = #{record.ownershipid,jdbcType=INTEGER},
+      </if>
+      <if test="record.veeexpires != null" >
+        veeexpires = #{record.veeexpires,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeframe != null" >
+        veeframe = #{record.veeframe,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeengine != null" >
+        veeengine = #{record.veeengine,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeyear != null" >
+        veeyear = #{record.veeyear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veemileage != null" >
+        veemileage = #{record.veemileage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endid != null" >
+        endid = #{record.endid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeload != null" >
+        veeload = #{record.veeload,jdbcType=INTEGER},
+      </if>
+      <if test="record.veepurchase != null" >
+        veepurchase = #{record.veepurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeregistered != null" >
+        veeregistered = #{record.veeregistered,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veevehicle != null" >
+        veevehicle = #{record.veevehicle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veecategory != null" >
+        veecategory = #{record.veecategory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeseries != null" >
+        veeseries = #{record.veeseries,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeinsurance != null" >
+        veeinsurance = #{record.veeinsurance,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeexpire != null" >
+        veeexpire = #{record.veeexpire,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeflag != null" >
+        veeflag = #{record.veeflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veebusiness != null" >
+        veebusiness = #{record.veebusiness,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veebusexp != null" >
+        veebusexp = #{record.veebusexp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeupkeep != null" >
+        veeupkeep = #{record.veeupkeep,jdbcType=VARCHAR},
+      </if>
+      <if test="record.veeupdate != null" >
+        veeupdate = #{record.veeupdate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cltid != null" >
+        cltid = #{record.cltid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.res1 != null" >
+        res1 = #{record.res1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.res2 != null" >
+        res2 = #{record.res2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.res3 != null" >
+        res3 = #{record.res3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.res4 != null" >
+        res4 = #{record.res4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.res5 != null" >
+        res5 = #{record.res5,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update vehicle
+    set veeid = #{record.veeid,jdbcType=VARCHAR},
+      veebrand = #{record.veebrand,jdbcType=VARCHAR},
+      veetype = #{record.veetype,jdbcType=VARCHAR},
+      veedriver = #{record.veedriver,jdbcType=VARCHAR},
+      veedriverphone = #{record.veedriverphone,jdbcType=VARCHAR},
+      veedate = #{record.veedate,jdbcType=VARCHAR},
+      ownershipid = #{record.ownershipid,jdbcType=INTEGER},
+      veeexpires = #{record.veeexpires,jdbcType=VARCHAR},
+      veeframe = #{record.veeframe,jdbcType=VARCHAR},
+      veeengine = #{record.veeengine,jdbcType=VARCHAR},
+      veeyear = #{record.veeyear,jdbcType=VARCHAR},
+      veemileage = #{record.veemileage,jdbcType=VARCHAR},
+      endid = #{record.endid,jdbcType=VARCHAR},
+      veeload = #{record.veeload,jdbcType=INTEGER},
+      veepurchase = #{record.veepurchase,jdbcType=VARCHAR},
+      veeregistered = #{record.veeregistered,jdbcType=VARCHAR},
+      veevehicle = #{record.veevehicle,jdbcType=VARCHAR},
+      veecategory = #{record.veecategory,jdbcType=VARCHAR},
+      veeseries = #{record.veeseries,jdbcType=VARCHAR},
+      veeinsurance = #{record.veeinsurance,jdbcType=VARCHAR},
+      veeexpire = #{record.veeexpire,jdbcType=VARCHAR},
+      veeflag = #{record.veeflag,jdbcType=VARCHAR},
+      veebusiness = #{record.veebusiness,jdbcType=VARCHAR},
+      veebusexp = #{record.veebusexp,jdbcType=VARCHAR},
+      veeupkeep = #{record.veeupkeep,jdbcType=VARCHAR},
+      veeupdate = #{record.veeupdate,jdbcType=VARCHAR},
+      cltid = #{record.cltid,jdbcType=VARCHAR},
+      res1 = #{record.res1,jdbcType=VARCHAR},
+      res2 = #{record.res2,jdbcType=VARCHAR},
+      res3 = #{record.res3,jdbcType=VARCHAR},
+      res4 = #{record.res4,jdbcType=VARCHAR},
+      res5 = #{record.res5,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
